@@ -1,0 +1,85 @@
+﻿原理1 为什么需要用户画像，对于业务来说有何帮助
+互联网发展到现在，产生了许多数据，这些数据将会有利于针对性的对用户进行了解。
+增长的动力主要来源于数据驱动，从数据分析的出发点，针对性的对用户行为及需求进行挖掘。
+若充分利用这些显性或隐形的数据，将会大大增加我们的业务。
+				
+原理2 有哪些维度可以用来设计用户标签
+要设计用户标签需遵守八字原则：用户消费行为分析，可从以下几个维度考虑：
+用户标签：性别、年龄、地域、收入、学历、职业等
+消费标签：消费习惯、购买意向、是否对促销敏感
+行为标签：时间段、频次、时长、收藏、点击、喜欢、评分
+内容分析：对用户平时浏览的内容进行分析，比如体育、游戏、八卦等
+				
+原理3 用户生命周期的三个阶段
+获客：如何进行拉新，通过更精准的营销获取客户
+粘客：个性化推荐，搜索排序，场景运营等
+留客：流失率预测，分析关键节点降低流失率
+				
+原理4 标签从何而来
+标签来源的典型方式有两种：
+PGC：专家生产
+UGC：普通生产
+				
+原理5 K-Means工作原理
+step1，选取K个节点作为初始的类中心点，这些点一般是从数据集中随机抽取的；
+step2，将每个点分配到最近的类中心店，这样就形成了K个类，然后重新计算每个点的中心店；
+重复step2，直到类不发生变化，或者也可以设置最大迭代次数。
+这样即使类中心点发生变化，但是只要达到最大迭代次数就会结束。
+				
+原理6 距离都有哪些表示方式
+两点之间距离的定义有：欧式距离、曼哈顿距离、切比雪夫距离、余弦距离。
+				
+原理7 数据规范化的方法：Min-max，Z-Score，小数定标
+Min-max规范化：进行[0,1]规范化之后，可以让不同维度的特征数据，在同一标准下可以进行比较。
+Z-Score规范化：新数值=（原数值-均值）- 标准差。
+小数定标规范化：通过移动小数点的位置来进行规范化。
+
+原理8 评测指标：准确率，召回率，精确率，F值
+准确率：accuracy=（TP+TN）/（TP+FP+TN+FN）
+召回率：recall=TP/(TP+FN)
+精确率：precision=TP/(TP+FP)
+F值：F=（（a^2+1）precision*）/a^2（precision+recall） 
+     当a=1时，F1=2*precision*recall/（precision+recall）
+				
+原理9 什么是TF-IDF
+TF:Term Frequency，词频，一个单词的重要性和它在文档中出现的次数呈正比。
+IDF：Inverse Document Frequency,逆向文档频率，一个单词在文档中的区分度。
+这个单词出现的文档数越少，区分度越大，IDF越大。
+TF=单词次数/文档中总单词数        IDF=log(文档总数/(单词出现的文档数+1))
+				
+原理10 基于内容的推荐系统步骤
+step1,将物品表示为item representation,为每个item抽取features；
+step2，特征学习Profile Learning:利用一个用户过去喜欢（不喜欢）的item的特征数据，
+来学习该用户的喜好特征（profile）；
+step3，生成推荐列表Recommendation Generation:通过用户profile与候选item的特征，推荐相关性最大的item。
+
+Thinking1 如何使用用户标签来指导业务（如何提升业务）
+可根据用户标签来给用户做个性化推荐，根据已有的标签推荐用户更感兴趣以及挖掘潜在兴趣，对用户有跟深入的了解，来获客粘客留客。
+				
+Thinking2 如果给你一堆用户数据，没有打标签。你该如何处理（如何打标签）
+可以通过K-Means,随机选取K个点作为初始的类中心点，通过聚集到距离最近的类中心点来形成K个类。
+然后重新计算每个类的中心点，不断重复这步直至收敛，就可得到各个标签类。
+				
+Thinking3 准确率和精确率有何不同（评估指标）
+准确率：accuracy=（TP+TN）/（TP+FP+TN+FN）    精确率：precision=TP/(TP+FP)
+准确率是模型预测正确数量所占总量的比例，而精确率是指在被识别为正类别的样本中，为正类别的比例。
+				
+Thinking4 如果你使用大众点评，想要给某个餐厅打标签。这时系统可以自动提示一些标签，你会如何设计（标签推荐）
+可以给用户推荐这个系统最热门的标签，或者推荐某种物品上最热门的标签，或者推荐自己最经常使用的标签，也可以综合考虑推荐。
+				
+Thinking5 我们今天使用了10种方式来解MNIST，这些方法有何不同？你还有其他方法来解决MNIST识别问题么（分类方法）
+				
+工具1 如何使用K-Means对球队进行聚类 球队 https://github.com/cystanford/RS6/tree/master/L2/team_cluster
+
+工具2 使用SimpleTagBased算法进行TOP-N推荐 Delicious https://github.com/cystanford/RS6/tree/master/L2/delicious-2k	
+			
+工具3 使用TPOT对MNIST进行分类 mnist https://github.com/cystanford/RS6/tree/master/L2/mnist
+
+工具4 使用Python对Titanic数据进行清洗 Titanic https://github.com/cystanford/RS6/tree/master/L2/titanic
+
+工具5 使用Python对Steam Video Games数据进行清洗	Steam Video Games https://github.com/cystanford/RS6/tree/master/L2/steam_video_games
+
+				
+Action1	针对Delicious数据集，对SimpleTagBased算法进行改进（使用NormTagBased、TagBased-TFIDF算法）	Delicious	
+		
+Action2	"对Titanic数据进行清洗，建模并对乘客生存进行预测。使用之前介绍过的10种模型中的至少2种（包括TPOT）"	Titanic			

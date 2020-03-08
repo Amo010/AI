@@ -1,0 +1,70 @@
+一、课上理解部分					
+原理1.手肘法判断K值
+K-Means手肘法可用于统计不同K取值的误差平方和，也可用于图像分隔，用K-Means对图像进行二聚类，并将图像聚类结果转换成图像尺寸的矩阵。
+可通过创建个新的pic_mark,用来保存图像聚类的结果，并设置不同的灰度值。但用K-Means分隔图像并不是语义分隔，按照图像的灰度值定义距离，对图像的文理、内容缺乏理解。
+
+原理2.推荐系统中的几种常用算法
+基于内容的推荐：内容特征表示，特征学习，推荐列表
+基于协同过滤的推荐：群体智能，用户历史行为
+基于关联规则的推荐：Transaction,频繁项及和关联规则挖掘
+基于效用的推荐：效用函数的定义
+基于知识的推荐：知识图谱的创建
+组合推荐：中和考虑各种推荐算法的使用场景并将其组合使用
+				
+原理3.什么是关联规则
+关联规则（Association Rules或者是Basket Analysis）是指对人行为规则的挖掘。
+Step1、把数据整理成id=>item形式，转换成transaction
+Step2、设定关联规则的参数（support、confident）挖掘关联规则
+Step3、按某个指标（lift、support等）对以关联规则排序
+
+				
+原理4.Apriori算法的流程是怎样的
+step1，k=1，计算k项集的支持度；
+step2，筛选掉小于最小支持度的项集；
+step3，如果项集为空，则对应k-1项集的结果为最终结果，否则k=k+1,重复1-3步。
+				
+原理5.Apriori算法存在哪些不足
+Apriori算法在计算过程中可能会产生大量的候选集，因为采用排列组合的方式，则需要将所有可能的项集都组合出来。
+每次计算都需要重新扫描数据来计算每个项集的支持度，这样一来会造成计算空间和时间的浪费。
+				
+原理6.可视化视图都有哪些方式
+可视化视图的方式有四种类别：
+比较：展示事物的排列顺序，比如条图
+联系：查看两个变量之间的关系，比如气泡图
+构成：每个部分所占整体的百分比，比如饼图
+分布：关系个数值范围包含多少项目，比如柱图
+				
+工具1：挖掘频繁项集和关联规则 BreadBasket	 https://github.com/cystanford/RS6/tree/master/L3/BreadBasket
+
+工具2：挖掘频繁项集和关联规则 MovieLens https://github.com/cystanford/RS6/tree/master/L3/MovieLens
+
+工具3：数据抓取，挖掘频繁项集和关联规则 MovieActors https://github.com/cystanford/RS6/tree/master/L3/MovieActors
+
+工具4:9种Python可视化的方式 https://github.com/cystanford/RS6/tree/master/L3/PythonEDA
+
+工具5:使用Python进行可视化EDA Titanic https://github.com/cystanford/RS6/tree/master/L3/PythonEDA
+
+具6:使用Python进行电影词云展示	MovieLens https://github.com/cystanford/RS6/tree/master/L3/MovieLens
+
+二、课下思考与练习					
+Thinking1 关联规则中的支持度、置信度和提升度代表的什么，如何计算
+关联规则中的支持度是指某个商品组合出现的次数与总次数之间的比例。支持度越高，代表这个组合出现的频率越大。
+置信度是个条件概率，指的是当你购买商品A时，会有多大的概率购买B。
+提升度是指商品A出现，对商品B的出现概率提升的程度。提升度（A->B）=置信度（A->B）/支持度（B）
+				
+Thinking2 关联规则与协同过滤的区别
+关联规则是基于Transaction，是基于购物订单进行的频繁项集挖掘；
+而协同过滤是基于用户偏好（评分），计算的是相似度。
+				
+Thinking3 为什么我们需要多种推荐算法
+基于关联规则的推荐算法有多种是为了弥补某些算法的不足，虽然有多种推荐算法，但解决的都是同一个问题。
+				
+Thinking4 关联规则中的最小支持度、最小置信度该如何确定
+关联规则中的最小支持度、最小置信度是通过不断实验得出，不同的数据集，最小支持度差别较大，可能在0.01到0.5之间。
+可以从高到低输出前20个项集的支持度作为参考。最小置信度可能是在0.5到1之间。
+				
+Thinking5 如何通过可视化的方式探索特征之间的相关性
+可通过用不同的图形可视化特征以此来探索其相关性。
+				
+Action1	针对MarketBasket数据集进行购物篮分析（频繁项集及关联规则挖掘） MarketBasket https://www.kaggle.com/dragonheir/basket-optimisation
+Action2	"针对MarketBasket进行词云分析，可视化探索（TOP10的商品有哪些）" MarketBasket https://www.kaggle.com/dragonheir/basket-optimisation

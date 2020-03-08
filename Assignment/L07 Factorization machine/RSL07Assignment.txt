@@ -1,0 +1,84 @@
+一、课上理解部分					
+原理 GBDT+LR的原理
+具有stacking思想的二分类器模型，用来解决二分类问题
+通过GBDT将特征进行组合，然后传入给线性分类器
+LR对GBDT产生的输入数据进行分类，使用L1正则化防止过拟合
+				
+原理 Gradient Boosting原理
+GDBT由多棵CART回归树组成，将累加所有树的结果作为最终结果，GBDT拟合的目标是一个梯度值（连续值，实数）。
+所有GBDT里都是回归树，GBDT用来做回归预测，调整后也可以用于分类。Boosting,迭代，即通过迭代多棵树来共同决策。
+损失函数用于评价模型性能（一般为拟合程度+正则化）。最好的方法就是让损失函数沿着梯度方向下降。
+Gradient Boosting,每一次建立模型是在之前模型损失函数的梯度下降方向。 
+				
+原理 使用GBDT进行新特征构造
+当GBDT训练好做预测时，输出的并不是最终的二分类概率值，
+而是要把模型中的每棵树计算得到的预测概率值所属的叶子节点位置记为1，构造新的训练数据。
+				
+原理 评价指标NE，Calibration，AUC
+NE,Normalized Cross-Entropy,NE=预测的logloss/background CTR的熵。NE=每次展现时预测得到的log loss的平均值，除以对整个数据集的平均log loos的值。
+Calibration预估CTR除以真是CTR，即预测的点击数与真实点击数的比值。数值越接近1，预测效果越好。
+AUC衡量排序质量的良好指标，但是无法进行校准，也就是如果我们希望得到预估准确的比值，而不是最优的排序结果，则需要使用NE或者Calibration。
+				
+原理 TPRate，FPRate计算	
+True Positive Rate:所有真实类别为1的样本中，预测类别为1的比例，TPRate=TP/TP+FN
+False Positive:所有真实类别为0的样本中，预测类别为1的比例，FPRate=TP/FP+TN			
+				
+原理 Wide & Deep模型
+Weed推荐：系统通过获得用户的购买日志数据，包括用户点击过哪些商品，然后同oneHot编码转为离散特征，解释性强。
+Deep推荐：通过深度学习出一些向量，这些向量是隐性特征，往往没有可解释性的
+两个模型融合的方法：
+    ensemble：两个模型分别对全量数据进行预测，然后根据权重组合最终的预测结果
+    join training：wide和deep的特征合一，构成一个模型进行预测
+				
+原理 Wide join Deep同时训练				
+		
+		
+原理 FNN模型
+
+				
+原理 NFM模型	
+
+			
+原理 FM与DNN的两种结合方式：DeepFM，NFM	
+			
+				
+原理 基于邻域的协同过滤 UserCF，ItemCF
+
+				
+原理 相似邻居的定义	
+
+			
+原理 相似度计算的方式
+
+
+工具 sklearn中的GBDT
+工具 DeepCTR中的WDL
+工具 DeepCTR中的NFM				
+工具 Surprise工具中的基于邻域的协同过滤算法使用	
+
+			
+二、课下思考与练习					
+Thinking1 在CTR点击率预估中，使用GBDT+LR的原理是什么？ 能简要说明GBDT和LR在CTR预估中的作用 
+
+
+Thinking2 Wide & Deep的模型结构是怎样的，为什么能通过具备记忆和泛化能力（memorization and generalization）			
+"1、能简要说明Wide&Deep的模型 2、如何具备记忆和泛化能力 "	
+
+Thinking3 在CTR预估中，使用FM与DNN结合的方式，有哪些结合的方式，代表模型有哪些？ 
+"1、能说出哪两种FM和DNN的组合方式 2、能说出FM和DNN的组合出的算法 "	
+
+Thinking4 Surprise工具中的baseline算法原理是怎样的？BaselineOnly和KNNBaseline有什么区别？ 
+"1、能简要说明baseline的原理 2、能简要说明BaselineOnly和KNNBaseline的区别 "	
+
+Thinking5 GBDT和随机森林都是基于树的算法，它们有什么区别？ 能简要说明这两种基于树的算法的不同 
+
+Thinking6 基于邻域的协同过滤都有哪些算法，请简述原理 
+"1、能说出两种不同的基于邻域的协同过滤的算法 2、这些算法之间的区别和作用 "	
+
+
+Action1	使用Wide&Deep模型对movielens进行评分预测	 
+"1、完成代码 2、使用Wide&Deep工具进行评分预测，代码正确 "	
+
+Action2	使用基于邻域的协同过滤（KNNBasic, KNNWithMeans, KNNWithZScore, KNNBaseline中的任意一种）
+对MovieLens数据集进行协同过滤，采用k折交叉验证(k=3)，输出每次计算的RMSE, MAE			
+"1、完成代码 2、得出K折，每次的RMSE，MAE结果 "	

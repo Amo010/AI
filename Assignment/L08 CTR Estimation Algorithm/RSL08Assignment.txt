@@ -1,0 +1,42 @@
+分类	内容	数据集	是否了解掌握	评阅点	GitHub代码
+课上理解部分					
+原理	什么是近似最近邻查找，常用的方法有哪些				
+原理	什么是Hash函数				
+原理	什么是k-shingle				
+原理	最小哈希值				
+原理	MinHash执行				
+原理	MinHashLSH				
+原理	MinHash与Jaccard相似度				
+工具	DataSketch中的MinHash, MinHashLSH, MinHashLSHForest, MinHashLSHEnsemble				
+工具	如何使用MinHashLSHForest对新闻句子Top-K相似内容进行查找				
+原理	汉明（Hamming）距离				
+原理	SimHash算法流程				
+原理	如何通过SimHash算法得到每篇文档指纹				
+工具	如何通过SimHash工具计算两篇文档的Hamming距离				
+原理	YouTube召回阶段DNN（输入、隐藏层、输出）				
+原理	YouTube排序阶段DNN（输入、隐藏层、输出）				
+原理	正负样本和上下文选择				
+原理	负采样 Negative Sampling				
+原理	为什么YouTube采用期望观看时间作为评估指标				
+原理	为什么YouTube在排序阶段没有采用经典的LR（逻辑回归）当作输出层，而是采用了Weighted Logistic Regression？				
+课下思考与练习					
+Thinking1	什么是近似最近邻查找，常用的方法有哪些			"能简要说明近似最近邻查找（5point）
+常用的方法（5point）"	
+Thinking2	为什么两个集合的minhash值相同的概率等于这两个集合的Jaccard相似度			"能简要说明MinHash值相同的概率与Jaccard相似度相等的证明（10point）
+
+"	
+Thinking3	SimHash在计算文档相似度的作用是怎样的？			"1、文档SimHash的计算过程（5points）
+2、如何通过文档的SimHash计算文档之间的相似度（5points）"	
+Thinking4	为什么YouTube采用期望观看时间作为评估指标			能简要说明原因（10points）	
+Thinking5	为什么YouTube在排序阶段没有采用经典的LR（逻辑回归）当作输出层，而是采用了Weighted Logistic Regression？			能简要说明原因（10points）	
+Action1	"使用MinHashLSHForest对微博新闻句子进行检索 weibo.txt
+针对某句话进行Query，查找Top-3相似的句子"			"1、完成代码（10points）
+2、使用MinHashLSHForest工具对MinHash进行index，并完成Query Top-K，代码正确（10points）"	
+Action2	"请设计一个基于DNN模型的推荐系统
+阐述两阶段的架构（召回、排序）
+以及每个阶段的DNN模型设计：
+1) DNN输入层（如何进行特征选择）
+2) DNN隐藏层结构
+3) DNN输出层
+"			"1、阐述两个阶段的整体架构（10points）
+2、每个阶段的DNN模型设计：输入层、隐藏层、输出层（20points）"	
